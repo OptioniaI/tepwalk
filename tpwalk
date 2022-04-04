@@ -1,0 +1,72 @@
+local TPWalk = Instance.new("ScreenGui")
+local main = Instance.new("ImageLabel")
+local on = Instance.new("TextButton")
+local off = Instance.new("TextButton")
+local Destroy = Instance.new("TextButton")
+
+TPWalk.Name = "TPWalk"
+TPWalk.Parent = game.CoreGui
+TPWalk.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
+
+main.Name = "main"
+main.Parent = TPWalk
+main.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+main.Position = UDim2.new(0, 652, 0, 305)
+main.Size = UDim2.new(0, 290, 0, 181)
+main.Visible = true
+main.Active = true
+main.Draggable = true
+main.Image = "rbxassetid://944145752"
+
+on.Name = "on"
+on.Parent = main
+on.BackgroundColor3 = Color3.fromRGB(149, 255, 180)
+on.BorderColor3 = Color3.fromRGB(126, 174, 255)
+on.BorderSizePixel = 5
+on.Position = UDim2.new(0, 35, 0, 82)
+on.Size = UDim2.new(0, 98, 0, 40)
+on.Font = Enum.Font.SourceSans
+on.Text = "On"
+on.TextColor3 = Color3.fromRGB(0, 0, 0)
+on.TextSize = 14.000
+
+off.Name = "off"
+off.Parent = main
+off.BackgroundColor3 = Color3.fromRGB(253, 140, 138)
+off.BorderColor3 = Color3.fromRGB(126, 174, 255)
+off.BorderSizePixel = 5
+off.Position = UDim2.new(0, 157, 0, 82)
+off.Size = UDim2.new(0, 98, 0, 40)
+off.Font = Enum.Font.SourceSans
+off.Text = "Off"
+off.TextColor3 = Color3.fromRGB(0, 0, 0)
+off.TextSize = 14.000
+
+Destroy.Name = "Destroy"
+Destroy.Parent = main
+Destroy.BackgroundColor3 = Color3.fromRGB(252, 76, 71)
+Destroy.BorderColor3 = Color3.fromRGB(112, 194, 255)
+Destroy.BorderSizePixel = 5
+Destroy.Position = UDim2.new(0, 87, 0, 134)
+Destroy.Size = UDim2.new(0, 115, 0, 28)
+Destroy.Font = Enum.Font.SourceSans
+Destroy.Text = "Destroy UI"
+Destroy.TextColor3 = Color3.fromRGB(0, 0, 0)
+Destroy.TextSize = 14.000
+
+on.MouseButton1Click:Connect(function()
+    _G.CF = true
+    while _G.CF == true do
+        task.wait()
+        game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame * CFrame.new(0, 0, -0.5)
+    end
+end)
+
+off.MouseButton1Click:Connect(function()
+    _G.CF = false
+end)
+
+Destroy.MouseButton1Click:Connect(function()
+   _G.CF = false
+   TPWalk:Destroy() 
+end)
